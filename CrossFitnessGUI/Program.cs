@@ -85,9 +85,8 @@ namespace CrossFitnessGUI
         public string showPrenotazione()
         {
             String s;
-            s = "ID Prenotazione : " + Convert.ToString(getIDPrenotazione()) + "\n" +
-                "ID Persona : " + Convert.ToString(getIDPersona()) + "\n" + "Username :" + getUsername() +
-                 "\n" + "Prenotazione: " + getLezione() + "\n";
+            s = "ID Prenotazione:" + Convert.ToString(getIDPrenotazione()) +
+                "ID Persona:" + Convert.ToString(getIDPersona()) + "Username:" + getUsername() + "Prenotazione:" + getLezione();
             return s;
         }
         public string toJson()
