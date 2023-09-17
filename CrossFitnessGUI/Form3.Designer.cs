@@ -205,6 +205,7 @@
             checkBoxMarFuncCla18.TabIndex = 6;
             checkBoxMarFuncCla18.Text = "Functional Class ore 18";
             checkBoxMarFuncCla18.UseVisualStyleBackColor = true;
+            checkBoxMarFuncCla18.CheckedChanged += checkBoxMarFuncCla18_CheckedChanged;
             // 
             // checkBoxMarCrossCla16
             // 
@@ -216,6 +217,7 @@
             checkBoxMarCrossCla16.TabIndex = 5;
             checkBoxMarCrossCla16.Text = "Crossfit Class ore 16";
             checkBoxMarCrossCla16.UseVisualStyleBackColor = true;
+            checkBoxMarCrossCla16.CheckedChanged += checkBoxMarCrossCla16_CheckedChanged;
             // 
             // checkBoxMarAcrYoga14
             // 
@@ -227,6 +229,7 @@
             checkBoxMarAcrYoga14.TabIndex = 4;
             checkBoxMarAcrYoga14.Text = "Acro Yoga ore 14";
             checkBoxMarAcrYoga14.UseVisualStyleBackColor = true;
+            checkBoxMarAcrYoga14.CheckedChanged += checkBoxMarAcrYoga14_CheckedChanged;
             // 
             // checkBoxMarFuncCla12
             // 
@@ -238,6 +241,7 @@
             checkBoxMarFuncCla12.TabIndex = 3;
             checkBoxMarFuncCla12.Text = "Functional Class ore 12";
             checkBoxMarFuncCla12.UseVisualStyleBackColor = true;
+            checkBoxMarFuncCla12.CheckedChanged += checkBoxMarFuncCla12_CheckedChanged;
             // 
             // checkBoxMarCrossCla10
             // 
@@ -249,6 +253,7 @@
             checkBoxMarCrossCla10.TabIndex = 2;
             checkBoxMarCrossCla10.Text = "Crossfit Class ore 10";
             checkBoxMarCrossCla10.UseVisualStyleBackColor = true;
+            checkBoxMarCrossCla10.CheckedChanged += checkBoxMarCrossCla10_CheckedChanged;
             // 
             // checkBoxMarAcrYo8
             // 
@@ -260,6 +265,7 @@
             checkBoxMarAcrYo8.TabIndex = 1;
             checkBoxMarAcrYo8.Text = "Acro Yoga ore 8";
             checkBoxMarAcrYo8.UseVisualStyleBackColor = true;
+            checkBoxMarAcrYo8.CheckedChanged += checkBoxMarAcrYo8_CheckedChanged;
             // 
             // labelmartedi
             // 
@@ -296,6 +302,7 @@
             checkBoxMerFunc18.TabIndex = 6;
             checkBoxMerFunc18.Text = "Functional ore 18";
             checkBoxMerFunc18.UseVisualStyleBackColor = true;
+            checkBoxMerFunc18.CheckedChanged += checkBoxMerFunc18_CheckedChanged;
             // 
             // checkBoxMerCross16
             // 
@@ -307,6 +314,7 @@
             checkBoxMerCross16.TabIndex = 5;
             checkBoxMerCross16.Text = "Crossfit ore 16";
             checkBoxMerCross16.UseVisualStyleBackColor = true;
+            checkBoxMerCross16.CheckedChanged += checkBoxMerCross16_CheckedChanged;
             // 
             // checkBoxMerYoga14
             // 
@@ -318,6 +326,7 @@
             checkBoxMerYoga14.TabIndex = 4;
             checkBoxMerYoga14.Text = "Yoga ore 14";
             checkBoxMerYoga14.UseVisualStyleBackColor = true;
+            checkBoxMerYoga14.CheckedChanged += checkBoxMerYoga14_CheckedChanged;
             // 
             // checkBoxMerFun12
             // 
@@ -329,6 +338,7 @@
             checkBoxMerFun12.TabIndex = 3;
             checkBoxMerFun12.Text = "Functional ore 12";
             checkBoxMerFun12.UseVisualStyleBackColor = true;
+            checkBoxMerFun12.CheckedChanged += checkBoxMerFun12_CheckedChanged;
             // 
             // checkBoxMerCross10
             // 
@@ -340,6 +350,7 @@
             checkBoxMerCross10.TabIndex = 2;
             checkBoxMerCross10.Text = "Crossfit ore 10";
             checkBoxMerCross10.UseVisualStyleBackColor = true;
+            checkBoxMerCross10.CheckedChanged += checkBoxMerCross10_CheckedChanged;
             // 
             // checkBoxMerYoga8
             // 
@@ -351,6 +362,7 @@
             checkBoxMerYoga8.TabIndex = 1;
             checkBoxMerYoga8.Text = "Yoga ore 8";
             checkBoxMerYoga8.UseVisualStyleBackColor = true;
+            checkBoxMerYoga8.CheckedChanged += checkBoxMerYoga8_CheckedChanged;
             // 
             // labelMercoledi
             // 
@@ -387,6 +399,7 @@
             checkBoxGioFuncCla18.TabIndex = 6;
             checkBoxGioFuncCla18.Text = "Functional Class ore 18";
             checkBoxGioFuncCla18.UseVisualStyleBackColor = true;
+            checkBoxGioFuncCla18.CheckedChanged += checkBoxGioFuncCla18_CheckedChanged;
             // 
             // checkBoxGioCrossCla16
             // 
@@ -398,6 +411,7 @@
             checkBoxGioCrossCla16.TabIndex = 5;
             checkBoxGioCrossCla16.Text = "Crossfit Class ore 16";
             checkBoxGioCrossCla16.UseVisualStyleBackColor = true;
+            checkBoxGioCrossCla16.CheckedChanged += checkBoxGioCrossCla16_CheckedChanged;
             // 
             // checkBoxGioAcrYoga14
             // 
@@ -409,6 +423,7 @@
             checkBoxGioAcrYoga14.TabIndex = 4;
             checkBoxGioAcrYoga14.Text = "Acro Yoga ore 14";
             checkBoxGioAcrYoga14.UseVisualStyleBackColor = true;
+            checkBoxGioAcrYoga14.CheckedChanged += checkBoxGioAcrYoga14_CheckedChanged;
             // 
             // checkBoxGioFunCla12
             // 
@@ -420,6 +435,7 @@
             checkBoxGioFunCla12.TabIndex = 3;
             checkBoxGioFunCla12.Text = "Functional Class ore 12";
             checkBoxGioFunCla12.UseVisualStyleBackColor = true;
+            checkBoxGioFunCla12.CheckedChanged += checkBoxGioFunCla12_CheckedChanged;
             // 
             // checkBoxGioCrossCla10
             // 
@@ -431,6 +447,7 @@
             checkBoxGioCrossCla10.TabIndex = 2;
             checkBoxGioCrossCla10.Text = "Crossfit Class ore 10";
             checkBoxGioCrossCla10.UseVisualStyleBackColor = true;
+            checkBoxGioCrossCla10.CheckedChanged += checkBoxGioCrossCla10_CheckedChanged;
             // 
             // checkBoxGioAcrYoga8
             // 
@@ -442,6 +459,7 @@
             checkBoxGioAcrYoga8.TabIndex = 1;
             checkBoxGioAcrYoga8.Text = "Acro Yoga ore 8";
             checkBoxGioAcrYoga8.UseVisualStyleBackColor = true;
+            checkBoxGioAcrYoga8.CheckedChanged += checkBoxGioAcrYoga8_CheckedChanged;
             // 
             // labelGiovedi
             // 
@@ -478,6 +496,7 @@
             checkBoxVenFunc18.TabIndex = 6;
             checkBoxVenFunc18.Text = "Functional ore 18";
             checkBoxVenFunc18.UseVisualStyleBackColor = true;
+            checkBoxVenFunc18.CheckedChanged += checkBoxVenFunc18_CheckedChanged;
             // 
             // checkBoxVenCross16
             // 
@@ -489,6 +508,7 @@
             checkBoxVenCross16.TabIndex = 5;
             checkBoxVenCross16.Text = "Crossfit ore 16";
             checkBoxVenCross16.UseVisualStyleBackColor = true;
+            checkBoxVenCross16.CheckedChanged += checkBoxVenCross16_CheckedChanged;
             // 
             // checkBoxVenYoga14
             // 
@@ -500,6 +520,7 @@
             checkBoxVenYoga14.TabIndex = 4;
             checkBoxVenYoga14.Text = "Yoga ore 14";
             checkBoxVenYoga14.UseVisualStyleBackColor = true;
+            checkBoxVenYoga14.CheckedChanged += checkBoxVenYoga14_CheckedChanged;
             // 
             // checkBoxVenFunc12
             // 
@@ -511,6 +532,7 @@
             checkBoxVenFunc12.TabIndex = 3;
             checkBoxVenFunc12.Text = "Functional ore 12";
             checkBoxVenFunc12.UseVisualStyleBackColor = true;
+            checkBoxVenFunc12.CheckedChanged += checkBoxVenFunc12_CheckedChanged;
             // 
             // checkBoxVenCross10
             // 
@@ -522,6 +544,7 @@
             checkBoxVenCross10.TabIndex = 2;
             checkBoxVenCross10.Text = "Crossfit ore 10";
             checkBoxVenCross10.UseVisualStyleBackColor = true;
+            checkBoxVenCross10.CheckedChanged += checkBoxVenCross10_CheckedChanged;
             // 
             // checkBoxVenYoga8
             // 
@@ -533,6 +556,7 @@
             checkBoxVenYoga8.TabIndex = 1;
             checkBoxVenYoga8.Text = "Yoga ore 8";
             checkBoxVenYoga8.UseVisualStyleBackColor = true;
+            checkBoxVenYoga8.CheckedChanged += checkBoxVenYoga8_CheckedChanged;
             // 
             // label2
             // 
@@ -566,6 +590,7 @@
             buttonCancella.TabIndex = 6;
             buttonCancella.Text = "Cancella Prenotazioni";
             buttonCancella.UseVisualStyleBackColor = false;
+            buttonCancella.Click += buttonCancella_Click;
             // 
             // buttonVisualizza
             // 
@@ -577,6 +602,7 @@
             buttonVisualizza.TabIndex = 7;
             buttonVisualizza.Text = "Visualizza Prenotazioni";
             buttonVisualizza.UseVisualStyleBackColor = false;
+            buttonVisualizza.Click += buttonVisualizza_Click;
             // 
             // label1
             // 
