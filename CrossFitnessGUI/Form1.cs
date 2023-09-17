@@ -58,6 +58,16 @@ namespace CrossFitnessGUI
                 var responseString = await response.Content.ReadAsStringAsync();
                 MessageBox.Show("Cliente loggato!");
                 Form3 formthree = new Form3();
+
+                if (textBoxLogin.Text == "Fabiola")
+                {
+                    formthree.IDpersone = 1;
+                }
+                else if (textBoxLogin.Text == "Matteo")
+                {
+                    formthree.IDpersone = 2;
+                }
+
                 formthree.username = textBoxLogin.Text;
                 formthree.Show();
                 return;

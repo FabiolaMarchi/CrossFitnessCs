@@ -3,37 +3,57 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace CrossFitnessGUI
 {
     [DataContract]
     public class Prenotazione
     {
-        [DataMember]
-        int IDPrenotazione { get; set; }
-        int IDPersona { get; set; }
-        String Username { get; set; }
-        List<String> LezioneList = new List<string> { };
+        //[DataMember]
+        [JsonProperty("IDPrenotazione:")]
+        public int IDPrenotazione { get; set; }
+        [JsonProperty("IDPersona:")]
+        public int IDPersona { get; set; }
+        [JsonProperty("Username:")]
+        public String Username { get; set; }
 
-    Dictionary<int, String> lezioniDict = new Dictionary<int, String>();
+        [JsonProperty("LezioneStr:")]
+        public string lez;
+        //[JsonProperty("Lezionelist:")]
+        //public List<String> LezioneList = new List<string> { };
 
-        int[] IDPrenotazioniArray = new int[30];
+        // [JsonProperty("Lezione:")]
+        //public String lezione {  get; set; }
+
+        //[JsonProperty("LezioneDict:")]
+
+        Dictionary<int, String> lezioniDict = new Dictionary<int, String>();
+
+        
 
 
-        public Prenotazione(int IDpre, int IDpers, String username, List<String> LezioneList)
+        public Prenotazione(int IDpre, int IDpers, String username, string Lezione)
+        {
+            
+            IDPrenotazione = IDpre;
+            IDPersona = IDpers;
+            Username = username;
+            lez = Lezione;
+
+        }
+
+        public Prenotazione(int IDpre, int IDpers, String username, Dictionary<int, String> lezioniDict)
         {
             IDPrenotazione = IDpre;
             IDPersona = IDpers;
             Username = username;
-            this.LezioneList = LezioneList;
+            this.lezioniDict = lezioniDict;
 
         }
+        
 
-        public Prenotazione()
-        {
 
-        }
-       
         public int getIDPrenotazione()
         {
             return IDPrenotazione;
@@ -46,12 +66,11 @@ namespace CrossFitnessGUI
         {
             return Username;
         }
-       
-
+      
         public String getLezione()
         {
             String s = "";
-            foreach (String item in LezioneList)
+            foreach (var item in lezioniDict)
             {
                 s += item;
                 s += " ";
@@ -73,14 +92,16 @@ namespace CrossFitnessGUI
         {
             Username = name;
         }
-
-        
-
-        public void setLezione(String lezione)
+      
+        public void setLezioneDict(Dictionary<int, String> dict)
+        {
+            lezioniDict = dict;
+        }
+       /* public void setLezione(String lezione)
         {
             LezioneList.Add(lezione);
             //lezioniDict.Add(index, lezione);
-        }
+        }*/
 
         public string showPrenotazione()
         {
@@ -89,10 +110,10 @@ namespace CrossFitnessGUI
                 "ID Persona:" + Convert.ToString(getIDPersona()) + "Username:" + getUsername() + "Prenotazione:" + getLezione();
             return s;
         }
-        public string toJson()
+        /*public string toJson()
         {
             return JsonSerializer.Serialize(showPrenotazione());
-        }
+        }*/
         
 
     }

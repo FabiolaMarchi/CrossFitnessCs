@@ -14,13 +14,15 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace CrossFitnessGUI
 {
     public partial class Form3 : Form
     {
         private HttpClient client;
         public string username;
-        public int IDpersone = 0;
+        public int IDpersone = 0
+            ;
         public int IDPrenotazioni = 0;
         public Dictionary<int, String> lezioniDict = new Dictionary<int, String>();
         public List<CheckBox> CheckList = new List<CheckBox> { };
@@ -88,44 +90,55 @@ namespace CrossFitnessGUI
             }
             else
             {
-                p = new Prenotazione();
-                p.setIDPrenotazione(IDPrenotazioni);
-                p.setIDPersona(IDpersone);
-                p.setUsername(username);
+                string lez = "";
                 foreach (var item in lezioniDict)
                 {
-                    p.setLezione(item.Value);
+                    lez = item.Value;
+
                 }
 
+                //p = new Prenotazione(IDPrenotazioni, IDpersone, username, lez);
+                //p.setIDPrenotazione(IDPrenotazioni);
+                //p.setIDPersona(IDpersone);
+                //p.setUsername(username);
+                
                 foreach (CheckBox item in CheckList)
                 {
                     item.CheckState = CheckState.Unchecked;
                 }
+                Prenotazione p1 = new Prenotazione(IDPrenotazioni, IDpersone, username, lez);
+                PrenotazioneList.Add(p1);
 
-                PrenotazioneList.Add(p);
 
-                /*var pren = new Dictionary<string, string>
-                {
-                    { "IDPrenotazione", IDPrenotazioni.ToString()},
-                    { "IDPersona",  IDpersone.ToString()},
-                    { "Username",  username},
-                    { "Lezione",  p.getLezione()}
 
-                };
+                /*
                 var myContent = JsonConvert.SerializeObject(p);
                 var response = await client.PostAsync("http://localhost:60080/login", content);
                 var content = new FormUrlEncodedContent(pren);
                               
                 var response = await client.PostAsync("http://localhost:60080/prenotazioni",content);*/
+
+                //var json = p.toJson();
+               
                 
-                var json = p.toJson();
+                //p1.setIDPrenotazione(1);
+                //p1.setIDPersona(1);
+                //p1.setUsername(username);
+                //p1.setLezione("ciao");
+
+
+                //questo funziona ma si prende solo IDprenotazione
+                var json = JsonConvert.SerializeObject(p1);
+
+
+                
                 string url = "http://localhost:60080/prenotazioni";
 
                 // Create a StringContent object with the JSON data
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 // Send the POST request with the JSON data
-                HttpResponseMessage response = await client.PostAsync(url, content);
+                var response = await client.PostAsync(url, content);
 
 
 
@@ -171,10 +184,10 @@ namespace CrossFitnessGUI
             {
                 CheckList.Add(checkBoxLunCross10);
 
-                if (prenotata(lezioniDict, 1) == 0)
+                if (prenotata(lezioniDict, 2) == 0)
                 {
                     IDPrenotazioni++;
-                    lezioniDict.Add(1, lez);
+                    lezioniDict.Add(2, lez);
                 }
                 else
                 {
@@ -192,10 +205,10 @@ namespace CrossFitnessGUI
             {
                 CheckList.Add(checkBoxLunFunc12);
 
-                if (prenotata(lezioniDict, 1) == 0)
+                if (prenotata(lezioniDict, 3) == 0)
                 {
                     IDPrenotazioni++;
-                    lezioniDict.Add(1, lez);
+                    lezioniDict.Add(3, lez);
                 }
                 else
                 {
@@ -213,10 +226,10 @@ namespace CrossFitnessGUI
             {
                 CheckList.Add(checkBoxLunYoga14);
 
-                if (prenotata(lezioniDict, 1) == 0)
+                if (prenotata(lezioniDict, 4) == 0)
                 {
                     IDPrenotazioni++;
-                    lezioniDict.Add(1, lez);
+                    lezioniDict.Add(4, lez);
                 }
                 else
                 {
@@ -234,10 +247,10 @@ namespace CrossFitnessGUI
             {
                 CheckList.Add(checkBoxLunCross16);
 
-                if (prenotata(lezioniDict, 1) == 0)
+                if (prenotata(lezioniDict, 5) == 0)
                 {
                     IDPrenotazioni++;
-                    lezioniDict.Add(1, lez);
+                    lezioniDict.Add(5, lez);
                 }
                 else
                 {
@@ -255,10 +268,10 @@ namespace CrossFitnessGUI
             {
                 CheckList.Add(checkBoxLunFunc18);
 
-                if (prenotata(lezioniDict, 1) == 0)
+                if (prenotata(lezioniDict, 6) == 0)
                 {
                     IDPrenotazioni++;
-                    lezioniDict.Add(1, lez);
+                    lezioniDict.Add(6, lez);
                 }
                 else
                 {
