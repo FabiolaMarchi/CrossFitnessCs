@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,16 +26,19 @@ namespace CrossFitnessGUI
             {
                 var values = new Dictionary<string, string>
                 {
-                    { "User", textBoxUserCrea.Text },
+                    { "User:", textBoxUserCrea.Text },
                     { "Password:", textBoxPswCrea.Text }
-                };
-                var content = new FormUrlEncodedContent(values);
-                var response = await client.PostAsync("http://localhost:60080/crea_account", content);
+                };                
+                var json = JsonSerializer.Serialize(values);
+                string url = "http://localhost:60080/crea_account";
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(url, content);
+
                 if (response.IsSuccessStatusCode)
                 {
                     var responseString = await response.Content.ReadAsStringAsync();
                     MessageBox.Show("Account Creato");
-
+                    this.Hide();
                     Form3 formthree = new Form3();
                     formthree.username = textBoxUserCrea.Text;
                     formthree.Show();
@@ -45,8 +49,8 @@ namespace CrossFitnessGUI
                     MessageBox.Show("Si e' verificato un errore, riprova!");
                     return;
                 }
-            }           
-            
+            }
+
         }
     }
 }

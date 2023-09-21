@@ -77,6 +77,7 @@ namespace CrossFitnessGUI
         {
             MessageBox.Show("Log Out effettuato con successo!");
             //in caso richiamare lo stesso form2, creo un costruttore gli assegno una variabile e richiamo la variabile.show()
+            this.Hide();
             Form1 formOne = new Form1();
             formOne.Show();
             return;
@@ -94,7 +95,7 @@ namespace CrossFitnessGUI
                 string url = "http://localhost:60080/prenotazioni";
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 
-                var response = await client.PostAsync(url, content);
+                var response = await client.DeleteAsync(url);
                 
 
                 if (response.IsSuccessStatusCode)
@@ -122,7 +123,7 @@ namespace CrossFitnessGUI
                 string lez = "";
                 foreach (var item in lezioniDict)
                 {
-                    lez = item.Value;
+                    lez += "\n" + "\t " + item.Value;
 
                 }
 

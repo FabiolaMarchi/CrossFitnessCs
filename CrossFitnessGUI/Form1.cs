@@ -1,10 +1,13 @@
 
+using System.Text;
+using System.Text.Json;
+
 namespace CrossFitnessGUI
 {
     public partial class Form1 : Form
     {
         //private HttpClientHandler clientHandler;
-
+        public Dictionary<int, String> lezioniDict = new Dictionary<int, String>();
         private HttpClient client;
 
         public Form1()
@@ -35,7 +38,7 @@ namespace CrossFitnessGUI
             app.Run();*/
             Form2 formtwo = new Form2();
             formtwo.Show();
-            return;
+            this.Hide();
 
         }
 
@@ -43,19 +46,26 @@ namespace CrossFitnessGUI
         {
             var values = new Dictionary<string, string>
             {
-                { "User", textBoxLogin.Text },
+                { "User:", textBoxLogin.Text },
                 { "Password:", textBoxPsw.Text }
             };
-
-            //var valore = "ciao";
-            //var content = new StringContent(valore, Encoding.UTF8, "text/plain");
-            var content = new FormUrlEncodedContent(values);
-
-            //var response = await client.GetAsync("http://localhost:60080/json");
-            var response = await client.PostAsync("http://localhost:60080/login", content);
+            
+            var json = JsonSerializer.Serialize(values);
+            string url = "http://localhost:60080/login";
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(url, content);            
             if (response.IsSuccessStatusCode)
             {
+                int i = 1;
                 var responseString = await response.Content.ReadAsStringAsync();
+                string[] words = responseString.Split('\n');
+                foreach (var word in words)
+                {
+                    
+                    lezioniDict.Add(i, word);
+                    i++;                    
+                }
+
                 MessageBox.Show("Cliente loggato!");
                 Form3 formthree = new Form3();
 
@@ -67,8 +77,9 @@ namespace CrossFitnessGUI
                 {
                     formthree.IDpersone = 2;
                 }
-
+                this.Hide();
                 formthree.username = textBoxLogin.Text;
+                formthree.lezioniDict = lezioniDict;
                 formthree.Show();
                 return;
             }
