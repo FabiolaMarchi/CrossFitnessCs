@@ -76,11 +76,27 @@ namespace CrossFitnessGUI
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Log Out effettuato con successo!");
-            //in caso richiamare lo stesso form2, creo un costruttore gli assegno una variabile e richiamo la variabile.show()
             this.Hide();
             Form1 formOne = new Form1();
             formOne.Show();
             return;
+        }
+
+        private void buttonVisualizza_Click(object sender, EventArgs e)
+        {
+            if (lezioniDict.Count == 0)
+            {
+                MessageBox.Show("Non ci sono prenotazioni!");
+            }
+            else
+            {
+                string lez = "";
+                foreach (var item in lezioniDict)
+                {
+                    lez += item.Value + "\n";
+                }
+                MessageBox.Show(lez);
+            }
         }
 
         private async void buttonCancella_Click(object sender, EventArgs e)
@@ -89,7 +105,10 @@ namespace CrossFitnessGUI
             {
                 PrenotazioneList.Clear();
                 lezioniDict.Clear();
-                IDPrenotazioni = 0;
+                foreach (var item in lezioniDict)
+                {
+                    IDPrenotazioni= item.Key;
+                }               
                 p1 = new Prenotazione(0, IDpersone, username, "");
                 var json = JsonConvert.SerializeObject(p1);
                 string url = "http://localhost:60080/prenotazioni";
@@ -97,7 +116,6 @@ namespace CrossFitnessGUI
                 
                 var response = await client.DeleteAsync(url);
                 
-
                 if (response.IsSuccessStatusCode)
                 {
                     var responseString = await response.Content.ReadAsStringAsync();
@@ -107,11 +125,10 @@ namespace CrossFitnessGUI
                 {
                     MessageBox.Show("Si e' verificato un errore, riprova!");
                     return;
-                }
-
-                
+                }                                
             }
         }
+
         private async void buttonprenota_Click(object sender, EventArgs e)
         {
             if (selezionato(CheckList) == 0)
@@ -123,10 +140,8 @@ namespace CrossFitnessGUI
                 string lez = "";
                 foreach (var item in lezioniDict)
                 {
-                    lez += "\n" + "\t " + item.Value;
-
+                    lez =  item.Value + "\n";
                 }
-
                 foreach (CheckBox item in CheckList)
                 {
                     item.CheckState = CheckState.Unchecked;
@@ -782,19 +797,7 @@ namespace CrossFitnessGUI
                 }
             }
         }
-
-        private void buttonVisualizza_Click(object sender, EventArgs e)
-        {
-            if (PrenotazioneList.Count == 0)
-            {
-                MessageBox.Show("Non ci sono prenotazioni!");
-            }
-            else
-            {
-                MessageBox.Show(p1.showPrenotazione());
-            }
-        }
-
-        
+              
+                
     }
 }

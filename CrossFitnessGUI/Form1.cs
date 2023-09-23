@@ -12,30 +12,14 @@ namespace CrossFitnessGUI
 
         public Form1()
         {
-            InitializeComponent();
-            // clientHandler = new HttpClientHandler();
-
-            //clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+            InitializeComponent();           
             client = new HttpClient();
-            // Pass the handler to httpclient(from you are calling api)
-            // HttpClient client = new HttpClient();
+            
         }
 
         private void CreaAccountButton_Click(object sender, EventArgs e)
         {
-            /*var builder = WebApplication.CreateBuilder();
-            builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
-
-            var app = builder.Build();
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-            app.MapControllers();
-
-            app.Run();*/
+            
             Form2 formtwo = new Form2();
             formtwo.Show();
             this.Hide();
@@ -88,8 +72,6 @@ namespace CrossFitnessGUI
                 MessageBox.Show("Credenziali errate, riprova!");
                 return;
             }
-
-
         }
 
         private void buttonEsci_Click(object sender, EventArgs e)
