@@ -152,7 +152,8 @@
             Controls.Add(OKbutton);
             Controls.Add(CreaAccountButton);
             Name = "Form1";
-            Text = "Form1";
+            Text = "CrossFitness - Login";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();

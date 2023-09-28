@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace CrossFitnessGUI
 {
@@ -28,7 +21,7 @@ namespace CrossFitnessGUI
                 {
                     { "User:", textBoxUserCrea.Text },
                     { "Password:", textBoxPswCrea.Text }
-                };                
+                };
                 var json = JsonSerializer.Serialize(values);
                 string url = "http://localhost:60080/crea_account";
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -39,9 +32,9 @@ namespace CrossFitnessGUI
                     var responseString = await response.Content.ReadAsStringAsync();
                     MessageBox.Show("Account Creato");
                     this.Hide();
-                    Form3 formthree = new Form3();
-                    formthree.username = textBoxUserCrea.Text;
-                    formthree.Show();
+                    Form4 form4 = new Form4();
+                    form4.username = textBoxUserCrea.Text;
+                    form4.Show();
                     return;
                 }
                 else if (!response.IsSuccessStatusCode)
