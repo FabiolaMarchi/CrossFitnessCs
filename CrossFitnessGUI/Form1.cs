@@ -1,6 +1,7 @@
 using System.Text;
 using System.Text.Json;
 
+
 namespace CrossFitnessGUI
 {
     public partial class Form1 : Form
@@ -43,13 +44,15 @@ namespace CrossFitnessGUI
             }
             else if (!response.IsSuccessStatusCode)
             {
-                MessageBox.Show("Credenziali errate, riprova!");
+                MessageBox.Show("Errore, riprova!");
                 return;
             }
         }
 
         private void buttonEsci_Click(object sender, EventArgs e)
         {
+            
+            client.Dispose();            
             Application.Exit();
         }
 

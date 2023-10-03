@@ -130,6 +130,7 @@ namespace CrossFitnessGUI
 
         private void buttonEsci_Click(object sender, EventArgs e)
         {
+            client.Dispose();
             Application.Exit();
         }
     }
