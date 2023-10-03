@@ -23,40 +23,47 @@ namespace CrossFitnessGUI
             var responseString = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
-                checkboxListLez = new List<String> { };
-                int lenght = checkboxListLez.Count;
-                string[] words = responseString.Split('\n');
+                //checkboxListLez = new List<String> { };
+                //int lenght = checkboxListLez.Count;
+                string[] lezioni = responseString.Split('\n');
+                string[] giorni = { "Lunedi'", "Martedi'", "Mercoledi'", "Giovedi'", "Venerdi'", "Sabato", "Domenica" };
+                int columns = 0;
+                int rows = 0;
 
-                foreach (var word in words)
+                /*foreach (var lezione in lezioni)
                 {
-                    checkboxListLez.Add(word);
+                    checkboxListLez.Add(lezione);
 
-                }
-                CheckBox[] boxes = new CheckBox[checkboxListLez.Count];
-
-                for (int i = 0; i < checkboxListLez.Count; i = i + 6)
+                }*/
+                foreach (String day in giorni)
                 {
-                    for (int j = 0; j < 5; j++)
+                    if (responseString.Contains(day))
                     {
+                        columns += 1;
+                    }
+                }
+
+                rows = lezioni.Length / columns;
+                //CheckBox[] boxes = new CheckBox[checkboxListLez.Count];
+
+                for (int col = 0; col < columns; col++)
+                {
+                    int j = col * rows;
+                    for (int row = 0; row < rows; row++)
+                    {
+                        int i = row + j;
                         CheckBox box = new CheckBox();
-                        box.Tag = i.ToString();
+                        box.Tag = "ciao2";
                         box.AutoSize = true;
                         box.Font = new Font("Sylfaen", 10F, FontStyle.Regular, GraphicsUnit.Point);
-                        box.Location = new Point((i * 60) + 20, (j * 45) + 20);                        
-                        int n = i / 6;
+                        box.Location = new Point((col * 350) + 30, (row * 50) + 20);
+                        box.Text = lezioni[i];
+                        this.Controls.Add(box);
+                        box.Click += new EventHandler(checkbox_Checked);
 
-                        if (n <= 4)
-                        {
-                            int prova2 = j + (6 * n);
 
-                            box.Text = checkboxListLez[prova2];
-                            this.Controls.Add(box);
-
-                            boxes[i] = box;
-                        }
-
-                        box.CheckStateChanged += new EventHandler(checkbox_Checked);
                     }
+
                 }
             }
             else
@@ -65,7 +72,7 @@ namespace CrossFitnessGUI
         async void checkbox_Checked(object sender, EventArgs e)
         {
             CheckBox box = sender as CheckBox;
-            CheckList.Add(box);
+            //CheckList.Add(box);
             var values = new Dictionary<string, string>
             {
                 { "Username:", username },
@@ -77,10 +84,12 @@ namespace CrossFitnessGUI
             var response = await client.PostAsync(url, content);
             if (response.IsSuccessStatusCode)
             {
-                MessageBox.Show("Prenotata effettuata con successo!");
+                MessageBox.Show("Prenotata effettuata con successo!");               
+                
             }
             else
                 MessageBox.Show("Hai già una prenotazione per questa lezione, non è possibile prenotarla nuovamente!");
+            box.CheckState = CheckState.Unchecked;
         }
         private async void buttonCancella_Click(object sender, EventArgs e)
         {
