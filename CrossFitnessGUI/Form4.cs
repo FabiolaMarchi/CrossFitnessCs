@@ -16,6 +16,7 @@ namespace CrossFitnessGUI
             client = new HttpClient();
         }
 
+        //GET to obtain lessons from Server C++ on http://localhost:60080/lezioni to dinamically create checkboxes
         private async void Form4_Load(object sender, EventArgs e)
         {
             string url = "http://localhost:60080/lezioni";
@@ -23,18 +24,11 @@ namespace CrossFitnessGUI
             var responseString = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
-                //checkboxListLez = new List<String> { };
-                //int lenght = checkboxListLez.Count;
                 string[] lezioni = responseString.Split('\n');
                 string[] giorni = { "Lunedi'", "Martedi'", "Mercoledi'", "Giovedi'", "Venerdi'", "Sabato", "Domenica" };
                 int columns = 0;
                 int rows = 0;
 
-                /*foreach (var lezione in lezioni)
-                {
-                    checkboxListLez.Add(lezione);
-
-                }*/
                 foreach (String day in giorni)
                 {
                     if (responseString.Contains(day))
@@ -42,9 +36,7 @@ namespace CrossFitnessGUI
                         columns += 1;
                     }
                 }
-
                 rows = lezioni.Length / columns;
-                //CheckBox[] boxes = new CheckBox[checkboxListLez.Count];
 
                 for (int col = 0; col < columns; col++)
                 {
@@ -61,18 +53,17 @@ namespace CrossFitnessGUI
                         this.Controls.Add(box);
                         box.Click += new EventHandler(checkbox_Checked);
 
-
                     }
-
                 }
             }
             else
                 MessageBox.Show("Errore del server");
         }
+
+        //POST to make reservation on Server C++ on http://localhost:60080/prenotazioni
         async void checkbox_Checked(object sender, EventArgs e)
         {
             CheckBox box = sender as CheckBox;
-            //CheckList.Add(box);
             var values = new Dictionary<string, string>
             {
                 { "Username:", username },
@@ -91,6 +82,8 @@ namespace CrossFitnessGUI
                 MessageBox.Show("Hai già una prenotazione per questa lezione, non è possibile prenotarla nuovamente!");
             box.CheckState = CheckState.Unchecked;
         }
+
+        //POST to delete all user legged reservations on Server C++ on http://localhost:60080/prenotazioni
         private async void buttonCancella_Click(object sender, EventArgs e)
         {
 
@@ -112,7 +105,7 @@ namespace CrossFitnessGUI
                 MessageBox.Show("Errore del server!");
 
         }
-
+        //POST to obtain all user logged reservation from Server C++ on http://localhost:60080/prenotazioni
         private async void buttonVisualizza_Click(object sender, EventArgs e)
         {
             var json = JsonSerializer.Serialize(username);

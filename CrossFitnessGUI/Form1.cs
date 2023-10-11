@@ -5,15 +5,13 @@ using System.Text.Json;
 namespace CrossFitnessGUI
 {
     public partial class Form1 : Form
-    {
-       
+    {       
         private HttpClient client;
         public Form1()
         {
             InitializeComponent();
             client = new HttpClient();
         }
-
         private void CreaAccountButton_Click(object sender, EventArgs e)
         {
             Form2 formtwo = new Form2();
@@ -21,6 +19,7 @@ namespace CrossFitnessGUI
             this.Hide();
         }
 
+        //POST to send credentials to Server C++ on http://localhost:60080/login 
         private async void OKbutton_Click(object sender, EventArgs e)
         {
             var values = new Dictionary<string, string>
@@ -50,8 +49,7 @@ namespace CrossFitnessGUI
         }
 
         private void buttonEsci_Click(object sender, EventArgs e)
-        {
-            
+        {            
             client.Dispose();            
             Application.Exit();
         }

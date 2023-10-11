@@ -13,6 +13,7 @@ namespace CrossFitnessGUI
             client = new HttpClient();
         }
 
+        //POST to send credentials to Server C++ and create an account on http://localhost:60080/crea_account 
         private async void buttonConferma_Click(object sender, EventArgs e)
         {
             if (textBoxPswCrea.Text == textBoxPswCreaConferma.Text)
@@ -29,7 +30,7 @@ namespace CrossFitnessGUI
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseString = await response.Content.ReadAsStringAsync();
+                    //var responseString = await response.Content.ReadAsStringAsync();
                     MessageBox.Show("Account Creato");
                     this.Hide();
                     Form4 form4 = new Form4();
