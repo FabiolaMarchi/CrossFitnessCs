@@ -1,11 +1,12 @@
 # CrossFitnessCs
-Client lato USER dell' applicazione Cross Fitness
-- Login / Register
-- Vista dianamica delle lezioni prenotrabili
-- Prenota lezione
-- Visualizzare le prenotazini
-- Cancella  tutte le lezioni prenotate 
+Client C# implementato per l'utente dell' applicazione Cross Fitness, 
+effettua delle REST API request per svolgere le seguenti funzioni:
+- Login
+- Visualizzazione dinamica delle lezioni da poter prenotare
+- Prenotazione di una o piu' lezione
+- Visualizzazione delle prenotazioni effettuate
+- Cancellazione di tutte le prenotazioni
 
 ## Funzionamento 
-L'applicazione Cs utilizza delle richieste API/get al server CPP sulla porta:60080
-Per funzionare a pieno e' necasario quindi esequire prima il server e poi lanciare la GUI
+L'applicazione C# effettua delle REST API request al server C++ sulla porta:60080,
+si consiglia, per poter usufruire di tutte le funzionalita' previste, di eseguire inzizialmente il server C++.
